@@ -27,7 +27,7 @@ jobs:
       - name: Checkout target
         uses: actions/checkout@v4
         with:
-          repository: ${{ secrets.STATIC_WEB_REPOSITORY }}
+          repository: ${{ secrets.FE_PPAP_REPOSITORY }}
           ref: gh-pages
           path: target
           token: ${{ secrets.GITHUB_TOKEN }}
