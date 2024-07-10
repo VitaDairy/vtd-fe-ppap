@@ -1,4 +1,4 @@
-name: vtd be java
+name: vtd fe static
 
 on:
   repository_dispatch:
