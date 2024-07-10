@@ -8,6 +8,7 @@ on:
 env:
   TRIGGERING_ACTOR: ${{ github.event.client_payload.triggering_actor}}
   TRIGGERING_REF: ${{ github.event.client_payload.triggering_ref}}
+  GCP_SERVICE_ACCOUNT_KEY: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
 jobs:
   setup-build-publish-deploy:
     environment: ${{ github.event.client_payload.triggering_env }}
@@ -55,7 +56,7 @@ jobs:
       - name: Authen GCP
         uses: "google-github-actions/auth@v2"
         with:
-          credentials_json: "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}"
+          credentials_json: "${{ env.GCP_SERVICE_ACCOUNT_KEY }}"
 
       - name: Setup GCP
         uses: google-github-actions/setup-gcloud@v2
