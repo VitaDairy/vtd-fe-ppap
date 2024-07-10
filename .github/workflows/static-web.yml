@@ -1,0 +1,53 @@
+name: vtd be java
+
+on:
+  repository_dispatch:
+    types:
+      - static/**
+
+env:
+  TRIGGERING_ACTOR: ${{ github.event.client_payload.triggering_actor}}
+  TRIGGERING_REF: ${{ github.event.client_payload.triggering_ref}}
+jobs:
+  setup-build-publish-deploy:
+    environment: ${{ github.event.client_payload.triggering_env }}
+    name: Setup build publish deploy
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ secrets.STATIC_WEB_REPOSITORY }}
+          token: ${{ secrets.GH_PAT }}
+          ref: ${{ env.TRIGGERING_REF }}
+          path: source
+
+      - name: Checkout target
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ secrets.STATIC_WEB_REPOSITORY }}
+          ref: gh-pages
+          path: target
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Running
+        run: |
+          rm -rf target/${{ env.TRIGGERING_REF }}
+          mkdir target/${{ env.TRIGGERING_REF }}
+          rm -rf source/.git
+          mv source/* target/${{ env.TRIGGERING_REF }}/
+
+      - name: Push
+        working-directory: target
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          { 
+            git add -A && 
+              git commit -m "deploy: ${{ env.TRIGGERING_REF }}" &&  
+              git push origin gh-pages 
+          } || { 
+            exit 0 
+          }
