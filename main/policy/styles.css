@@ -1,0 +1,366 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+
+:root {
+  --picton-blue: rgba(64, 183, 226, 0.2);
+  --endeavour: #007ad4;
+}
+
+html {
+  height: 100%;
+}
+
+/* Header/Logo Title */
+.header {
+  padding: 20px;
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 18px;
+  font-family: "Be Vietnam Pro", Helvetica, Arial, serif;
+}
+
+.font-class-1 {
+  color: var(--endeavour);
+  font-family: "Be Vietnam Pro", Helvetica, Arial, serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 18px;
+}
+
+.font-class-3 {
+  color: var(--endeavour);
+  font-family: "Be Vietnam Pro", Helvetica, Arial, serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 18px;
+}
+
+.strong {
+  font-weight: 700;
+}
+
+.logo {
+  align-items: flex-end;
+  background-color: transparent;
+  display: inline-flex;
+  flex-direction: row;
+  flex-shrink: 0;
+  justify-content: flex-start;
+  height: 200px;
+  width: auto;
+  padding-top:70px;
+  padding-bottom: 50px;
+}
+/* Page Content */
+.splash {
+  background-image: url(./images/bg-hero.png);
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: bottom;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.cstv-box {
+  padding: 5% 5% 5% 5%; 
+  background: linear-gradient(270deg, rgba(255, 255, 255, 0.40) 50%, rgba(237, 237, 237, 0.00) 177.44%);
+  background-blend-mode: lighten;
+  filter: blur(0px);
+}
+
+.content {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+li {
+  text-align: justify;
+}
+
+@media only screen and (max-width: 600px) {
+  .content svg {
+    width: calc(100% - 10px);
+  }
+}
+
+.i-u0110u1e--nghu0129a {
+  background-color: transparent;
+  flex-shrink: 0;
+  height: auto;
+  min-height: 24px;
+  text-align: left;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.i-u0110u1e--nghu0129b {
+  background-color: transparent;
+  flex-shrink: 0;
+  height: auto;
+  min-height: 24px;
+  text-align: left;
+}
+
+.italic{
+  font-style: italic;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.font-class-2 {
+  color: black;
+  font-family: "Be Vietnam Pro", Helvetica, Arial, serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+}
+.span1-xMi127 {
+  letter-spacing: 0px;
+}
+.span2-xMi127 {
+  color: rgba(255, 0, 0, 1);
+  letter-spacing: 0px;
+}
+.span3-xMi127 {
+  letter-spacing: 0px;
+}
+.x1-u0110iu1-ed-du1ee5n {
+  background-color: transparent;
+  flex-shrink: 0;
+  height: auto;
+  text-align: justify;
+}
+
+.span1-2UNQpZ {
+  letter-spacing: 0px;
+}
+.span2-2UNQpZ {
+  color: rgba(255, 0, 0, 1);
+  letter-spacing: 0px;
+}
+.span3-2UNQpZ {
+  letter-spacing: 0px;
+}
+
+.fill-3 {
+  background-color: transparent;
+  flex-shrink: 0;
+  height: 11px;
+  margin-top: 1px;
+  width: 8px;
+}
+table.no-border,
+table.no-border > tbody > tr,
+table.no-border > tbody > tr > td {
+  border: none;
+  vertical-align: middle;
+}
+
+table.no-border {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table.responsive > tbody > tr > td > img {
+  width: 100%;
+}
+
+.lower-than {
+  font-size: 24px;
+  color: #007ad4;
+  font-weight: 300;
+  letter-spacing: 0;
+  line-height: 29px;
+  text-align: right;
+}
+
+table.blue-table > thead > tr > th {
+  background-color: rgba(64, 183, 226, 0.2);
+  color: #40b7e2;
+  font-weight: 600;
+  padding: 5px;
+  border: 0.5px solid #007ad4;
+}
+
+table.blue-table > tbody > tr > td.blue {
+  background-color: rgba(64, 183, 226, 0.2);
+  color: #40b7e2;
+  font-weight: 600;
+  padding: 5px;
+}
+table.blue-table > tbody > tr > td {
+  color: #007ad4;
+  font-weight: 800;
+}
+table.blue-table {
+  border: 0.5px solid rgba(64, 183, 226, 0.2);
+}
+table.blue-table > thead > tr > th.darker {
+  /* background-color: #40b7e2; */
+  background: var(--Primary-Ombre-Mix, linear-gradient(134deg, #44A5D8 0%, #15C770 97.83%));
+  color: #fff;
+}
+
+img.middle {
+  vertical-align: middle;
+}
+
+.small {
+  font-size: 8px;
+  line-height: 10px;
+}
+
+.shadow.top {
+  box-shadow: 0px -40px 10px -15px rgba(0, 0, 0, 0.2);
+}
+.shadow.bottom {
+  box-shadow: 0px 40px 10px -15px rgba(0, 0, 0, 0.2);
+}
+.shadow.left {
+  box-shadow: -15px 0px 10px -15px rgba(0, 0, 0, 0.2);
+}
+.shadow.right {
+  box-shadow: 15px 0px 10px -15px rgba(0, 0, 0, 0.2);
+}
+
+.row-2-col {
+  display: flex;
+}
+
+.row-2-col > .col {
+  flex: 50%;
+}
+
+table,
+tr,
+td {
+  padding: 1em;
+
+  border: 1px solid rgb(180, 198, 231);
+  border-collapse: collapse;
+
+  font-size: 10px;
+  font-family: Be Vietnam Pro-Regular, Be Vietnam Pro;
+  font-weight: normal;
+
+  vertical-align: middle;
+}
+
+table tr {
+  align-items: center;
+}
+
+table th {
+  color: #ffffff;
+  background-color: rgb(0, 122, 212);
+  font-weight: 600;
+
+  padding: 10px;
+}
+
+.table-member td {
+  font-size: 9.5px;
+  padding-left: 15%;
+}
+.table-member .member-title {
+  color: #0070c0;
+  font-weight: 800;
+}
+
+.table-scores .score-header th:first-child {
+  width: 35%;
+  vertical-align: inherit;
+  border: 1px solid #ffffff;
+}
+
+.table-scores .subtitle {
+  color: #ffffff;
+  background-color: rgb(0, 122, 212);
+  text-align: center;
+}
+
+.scores-title {
+  color: #0070c0;
+  font-weight: 500;
+  vertical-align: middle;
+  padding: 10px;
+}
+
+.table-scores td {
+  text-align: center;
+}
+
+.table {
+  width: calc(100% - 40px);
+  margin: 10px 20px 0px;
+}
+.table-treatment {
+  margin: 10px 20px 0px;
+}
+
+.table-treatment,
+.table-treatment tr,
+.table-treatment td {
+  padding: 1em;
+
+  border: 1px solid rgb(180, 198, 231);
+  border-collapse: collapse;
+
+  font-size: 10px;
+  font-family: Be Vietnam Pro-Regular, Be Vietnam Pro;
+  font-weight: normal;
+
+  vertical-align: middle;
+}
+.treatment-header > th {
+  padding: 10px;
+}
+
+.table-treatment-row {
+  align-items: center;
+}
+
+.table-treatment div {
+  display: flex;
+}
+.table-treatment svg {
+  overflow: initial;
+  margin-top: 7px;
+}
+.table-treatment p {
+  font-size: 9.5px;
+  line-height: 1.2;
+
+  margin-top: 5px;
+  margin-left: 5px;
+}
+.treatment-present {
+  color: #007ad4;
+}
+.table-treatment .treatment-header {
+  color: #ffffff;
+  background-color: rgb(0, 122, 212);
+  /* padding: 10px */
+  font-weight: 600;
+}
+
+.table-treatment .treatment-activity-title {
+  color: #ffffff;
+  background-color: rgb(0, 135, 233);
+
+  padding: 0 5px;
+  font-weight: 600;
+  text-align: center;
+
+  width: 20%;
+}
