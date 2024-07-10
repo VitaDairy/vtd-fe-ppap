@@ -66,5 +66,6 @@ jobs:
         if: ${{ env.TRIGGERING_REF == 'main' }}
         uses: google-github-actions/upload-cloud-storage@v2
         with:
-          path: target/main/*
+          path: target/main
           destination: ${{ secrets.BUCKET_NAME }}
+          parent: false
