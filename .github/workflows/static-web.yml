@@ -1,4 +1,4 @@
-name: vtd fe static
+name: Vtd static
 
 on:
   repository_dispatch:
