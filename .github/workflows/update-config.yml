@@ -9,8 +9,8 @@ permissions:
   contents: write
 
 jobs:
-  setup-build-publish-deploy:
-    name: Update config ${{ matrix.env }}
+  run:
+    name: Run ${{ matrix.env }}
     environment: ${{ matrix.env }}
     runs-on: ubuntu-latest
     continue-on-error: true
@@ -34,24 +34,35 @@ jobs:
           path: ${{ matrix.env }}/app-config.json
           if-no-files-found: warn
 
-      # - name: Checkout source
-      #   uses: actions/checkout@v4
-      #   with:
-      #     repository: ${{ secrets.STATIC_WEB_REPOSITORY }}
-      #     token: ${{ secrets.GH_PAT }}
-      #     path: source
+  after-run:
+    name: After run
+    needs: [run]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download from artifact
+        uses: actions/download-artifact@v4
 
-      # - name: Move file
-      #   run: |
-      #     rm -rf ./source/${{ matrix.env }}/conf/app-config.json
-      #     mv ./tmp/app-config.json ./source/${{ matrix.env }}/conf/app-config.json
+      - name: Checkout source
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ secrets.STATIC_WEB_REPOSITORY }}
+          token: ${{ secrets.GH_PAT }}
+          path: source
 
-      # - name: Commit
-      #   working-directory: source
-      #   run: |
-      #     cat ./${{ matrix.env }}/conf/app-config.json
-      #     git config user.name "GitHub Actions"
-      #     git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-      #     git add -A
-      #     git diff-index --quiet HEAD || git commit -m ':white_check_mark: Update'
-      #     git pull origin main && git push origin main
+      - name: test
+        run: ls
+
+    # - name: Move file
+    #   run: |
+    #     rm -rf ./source/${{ matrix.env }}/conf/app-config.json
+    #     mv ./tmp/app-config.json ./source/${{ matrix.env }}/conf/app-config.json
+
+    # - name: Commit
+    #   working-directory: source
+    #   run: |
+    #     cat ./${{ matrix.env }}/conf/app-config.json
+    #     git config user.name "GitHub Actions"
+    #     git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+    #     git add -A
+    #     git diff-index --quiet HEAD || git commit -m ':white_check_mark: Update'
+    #     git pull origin main && git push origin main
