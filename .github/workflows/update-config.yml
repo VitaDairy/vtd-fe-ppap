@@ -41,6 +41,8 @@ jobs:
     steps:
       - name: Download from artifact
         uses: actions/download-artifact@v4
+        with:
+          path: ./tmp
 
       - name: Checkout source
         uses: actions/checkout@v4
@@ -52,7 +54,7 @@ jobs:
       - name: test
         run: |
           ls
-          cd dev && ls
+          cd ./tmp/dev && ls
 
     # - name: Move file
     #   run: |
