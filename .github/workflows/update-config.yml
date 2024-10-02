@@ -31,7 +31,7 @@ jobs:
 
       - name: Call api
         run: |
-          curl -X GET ${{ vars.BASE_URL }}/api/app-config -H "Content-Type: application/json" -o ./data.json
+          curl -X GET ${{ vars.BASE_URL }}/api/app-config -H "Content-Type: application/json" -o ./${{ matrix.env }}/conf/app-config.json
 
       - name: Call api
-        run: ls
+        run: ls && cat ./${{ matrix.env }}/conf/app-config.json
