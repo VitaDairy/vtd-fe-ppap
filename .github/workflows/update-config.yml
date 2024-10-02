@@ -86,4 +86,4 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
           git diff-index --quiet HEAD || git commit -m ':white_check_mark: Update'
-          git pull origin main -f
+          git push origin main -f
