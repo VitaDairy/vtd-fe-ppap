@@ -56,11 +56,6 @@ jobs:
           token: ${{ secrets.GH_PAT }}
           path: source
 
-      - name: test
-        run: |
-          ls
-          cd ./tmp/dev && ls
-
       - name: Move file
         run: |
           # DEV environment
