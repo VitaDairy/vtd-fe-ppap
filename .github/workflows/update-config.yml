@@ -1,0 +1,37 @@
+name: Update config
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  setup-build-publish-deploy:
+    name: Setup build publish deploy
+    environment: ${{ matrix.env }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        include:
+          - env: dev
+          - env: stg
+          - env: prd
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ secrets.STATIC_WEB_REPOSITORY }}
+          token: ${{ secrets.GH_PAT }}
+          # ref: ${{ env.MATRIX }}
+          # path: source
+
+      - name: Call api
+        run: |
+          curl -X GET ${{ env.BASE_URL }}/api/app-config -H "Content-Type: application/json" -o ./data.json
+
+      - name: Call api
+        run: ls
