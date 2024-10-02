@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   setup-build-publish-deploy:
-    name: Setup build publish deploy
+    name: Update config ${{ matrix.env }}
     environment: ${{ matrix.env }}
     runs-on: ubuntu-latest
     strategy:
@@ -31,7 +31,7 @@ jobs:
 
       - name: Call api
         run: |
-          curl -X GET ${{ env.BASE_URL }}/api/app-config -H "Content-Type: application/json" -o ./data.json
+          curl -X GET ${{ vars.BASE_URL }}/api/app-config -H "Content-Type: application/json" -o ./data.json
 
       - name: Call api
         run: ls
