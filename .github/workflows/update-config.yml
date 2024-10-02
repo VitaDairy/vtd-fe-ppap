@@ -5,6 +5,11 @@ on:
     branches:
       - main
 
+  schedule:
+    - cron: 0 0/12 * * *
+
+  workflow_dispatch:
+
 permissions:
   contents: write
 
@@ -56,17 +61,31 @@ jobs:
           ls
           cd ./tmp/dev && ls
 
-    # - name: Move file
-    #   run: |
-    #     rm -rf ./source/${{ matrix.env }}/conf/app-config.json
-    #     mv ./tmp/app-config.json ./source/${{ matrix.env }}/conf/app-config.json
+      - name: Move file
+        run: |
+          # DEV environment
+          if [ ! -f ./dev/app-config.json ]; then
+            rm -rf ./source/dev/conf/app-config.json
+            mv ./dev/app-config.json ./source/dev/conf/app-config.json
+          fi
 
-    # - name: Commit
-    #   working-directory: source
-    #   run: |
-    #     cat ./${{ matrix.env }}/conf/app-config.json
-    #     git config user.name "GitHub Actions"
-    #     git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-    #     git add -A
-    #     git diff-index --quiet HEAD || git commit -m ':white_check_mark: Update'
-    #     git pull origin main && git push origin main
+          # STG environment
+          if [ ! -f ./stg/app-config.json ]; then
+            rm -rf ./source/stg/conf/app-config.json
+            mv ./stg/app-config.json ./source/stg/conf/app-config.json
+          fi
+
+          # PRD environment
+          if [ ! -f ./prd/app-config.json ]; then
+            rm -rf ./source/prd/conf/app-config.json
+            mv ./prd/app-config.json ./source/prd/conf/app-config.json
+          fi
+
+      - name: Commit
+        working-directory: source
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff-index --quiet HEAD || git commit -m ':white_check_mark: Update'
+          git pull origin main -f
