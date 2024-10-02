@@ -30,7 +30,7 @@ jobs:
       - name: Upload to artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.env }}-app-config
+          name: ${{ matrix.env }}
           path: ${{ matrix.env }}/app-config.json
           if-no-files-found: warn
 
@@ -50,7 +50,9 @@ jobs:
           path: source
 
       - name: test
-        run: ls
+        run: |
+          ls
+          cd dev && ls
 
     # - name: Move file
     #   run: |
