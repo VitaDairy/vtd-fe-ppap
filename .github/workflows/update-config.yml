@@ -64,21 +64,21 @@ jobs:
       - name: Move file
         run: |
           # DEV environment
-          if [ ! -f ./dev/app-config.json ]; then
+          if [ -f ./tmp/dev/app-config.json ]; then
             rm -rf ./source/dev/conf/app-config.json
-            mv ./dev/app-config.json ./source/dev/conf/app-config.json
+            mv ./tmp/dev/app-config.json ./source/dev/conf/app-config.json
           fi
 
           # STG environment
-          if [ ! -f ./stg/app-config.json ]; then
+          if [ -f ./tmp/stg/app-config.json ]; then
             rm -rf ./source/stg/conf/app-config.json
-            mv ./stg/app-config.json ./source/stg/conf/app-config.json
+            mv ./tmp/stg/app-config.json ./source/stg/conf/app-config.json
           fi
 
           # PRD environment
-          if [ ! -f ./prd/app-config.json ]; then
+          if [ -f ./tmp/prd/app-config.json ]; then
             rm -rf ./source/prd/conf/app-config.json
-            mv ./prd/app-config.json ./source/prd/conf/app-config.json
+            mv ./tmp/prd/app-config.json ./source/prd/conf/app-config.json
           fi
 
       - name: Commit
