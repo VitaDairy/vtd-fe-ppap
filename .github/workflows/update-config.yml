@@ -13,6 +13,7 @@ jobs:
     name: Update config ${{ matrix.env }}
     environment: ${{ matrix.env }}
     runs-on: ubuntu-latest
+    continue-on-error: true
     strategy:
       fail-fast: true
       matrix:
