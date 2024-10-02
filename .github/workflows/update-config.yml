@@ -21,17 +21,29 @@ jobs:
           - env: stg
           - env: prd
     steps:
+      - name: Call update /api/app-config
+        run: |
+          mkdir tmp
+          curl -X GET ${{ vars.BASE_URL }}/api/app-config -H "Content-Type: application/json" -o ./tmp/app-config.json
+
       - name: Checkout source
         uses: actions/checkout@v4
         with:
           repository: ${{ secrets.STATIC_WEB_REPOSITORY }}
           token: ${{ secrets.GH_PAT }}
-          # ref: ${{ env.MATRIX }}
-          # path: source
+          path: source
 
-      - name: Call api
+      - name: Move file
         run: |
-          curl -X GET ${{ vars.BASE_URL }}/api/app-config -H "Content-Type: application/json" -o ./${{ matrix.env }}/conf/app-config.json
+          rm -rf ./source/${{ matrix.env }}/conf/app-config.json
+          mv ./tmp/app-config.json ./source/${{ matrix.env }}/conf/app-config.json
 
-      - name: Call api
-        run: ls && cat ./${{ matrix.env }}/conf/app-config.json
+      - name: Commit
+        working-directory: source
+        run: |
+          cat ./${{ matrix.env }}/conf/app-config.json
+          git config user.name "GitHub Actions"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff-index --quiet HEAD || git commit -m ':white_check_mark: Update '
+          git push origin main
