@@ -60,18 +60,21 @@ jobs:
         run: |
           # DEV environment
           if [ -f ./tmp/dev/app-config.json ]; then
+            echo move dev
             rm -rf ./source/dev/conf/app-config.json
             mv ./tmp/dev/app-config.json ./source/dev/conf/app-config.json
           fi
 
           # STG environment
           if [ -f ./tmp/stg/app-config.json ]; then
+            echo move stg
             rm -rf ./source/stg/conf/app-config.json
             mv ./tmp/stg/app-config.json ./source/stg/conf/app-config.json
           fi
 
           # PRD environment
           if [ -f ./tmp/prd/app-config.json ]; then
+            echo move prd
             rm -rf ./source/prd/conf/app-config.json
             mv ./tmp/prd/app-config.json ./source/prd/conf/app-config.json
           fi
